@@ -7,3 +7,4 @@ Grupo G1 - Metodos de Desenvolvimento de Software 2026/2
 * Daniel Almeida Frota - 251041010
 * Deboráh Fragoso da Silva - 251036333
 * João Vithor Camargo Emidio - 251023264
+* Breno Henrique da Rocha Rodrigues - 222006599
