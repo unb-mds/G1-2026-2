@@ -8,3 +8,4 @@ Grupo G1 - Metodos de Desenvolvimento de Software 2026/2
 * Deboráh Fragoso da Silva - 251036333
 * João Vithor Camargo Emidio - 251023264
 * Breno Henrique da Rocha Rodrigues - 222006599
+* Daniel Paz Dos Passos -222021862
