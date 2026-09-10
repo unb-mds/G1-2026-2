@@ -35,7 +35,7 @@ A plataforma será um agregador de informações e não substituirá os canais o
 - Revisão e moderação das contribuições antes da publicação.
 - Registro da fonte e da data de verificação de publicações institucionais.
 - Relato de problemas em publicações, como duplicidade, link quebrado ou desatualização.
-- Cadastro opcional para salvar preferências de cursos e categorias.
+- Cadastro de usuários para envio de contribuições e registro de denúncias.
 
 ### 3.2 Fora do escopo inicial
 
@@ -76,77 +76,87 @@ O sistema deve permitir classificar publicações por categoria, unidade respons
 
 O sistema deve exibir a data da última verificação ou atualização conhecida de cada publicação institucional.
 
-### RF-008 - Estados da publicação
+### RF-008 - Relato de problemas
 
-O sistema deve diferenciar publicações ativas, encerradas, canceladas, desatualizadas, não verificadas e sem prazo informado.
+O sistema deve exigir autenticação para registrar relatos de erro, duplicidade, link quebrado ou desatualização, vinculando cada denúncia ao usuário que a criou.
 
-Publicações encerradas, canceladas ou desatualizadas não devem ser apresentadas como oportunidades ativas.
+### RF-009 - Contribuições acadêmicas
 
-### RF-009 - Relato de problemas
+Somente usuários autenticados, considerados colaboradores, podem enviar contribuições associadas a curso, disciplina e tipo de conteúdo.
 
-O sistema deve permitir relatar erro, duplicidade, link quebrado ou desatualização em uma publicação.
+O sistema deve exigir curso, disciplina, tipo e conteúdo ou URL. O vínculo com um conteúdo existente será informado somente em alterações.
 
-### RF-010 - Contribuições acadêmicas
-
-O sistema deve permitir enviar contribuições associadas a um curso, disciplina e tipo de conteúdo.
-
-### RF-011 - Revisão de contribuições
+### RF-010 - Revisão de contribuições
 
 Novas contribuições ou alterações devem permanecer pendentes até a revisão de um moderador autorizado.
 
-### RF-012 - Moderação
+### RF-011 - Moderação
 
-Moderadores devem poder aprovar, rejeitar, arquivar ou devolver contribuições para ajustes. Quando necessário, a decisão deve conter uma justificativa.
+Moderadores devem poder aprovar, rejeitar, arquivar ou devolver contribuições para ajustes. As decisões devem preservar uma justificativa quando informada.
 
-### RF-013 - Guia de contribuição
+### RF-012 - Guia de contribuição
 
 O sistema deve disponibilizar orientações sobre qualidade, escopo permitido, autoria e referência das fontes.
 
-### RF-014 - Conta e preferências
-
-O sistema deve permitir autenticação opcional para salvar curso, unidade, categorias e preferências do usuário.
-
-### RF-015 - Acesso público
+### RF-013 - Acesso público
 
 A consulta básica de conteúdos e publicações deve estar disponível sem autenticação.
 
-### RF-016 - Administração
+### RF-014 - Administração
 
-Administradores devem possuir recursos para gerenciar fontes, publicações, categorias, disciplinas, contribuições, denúncias e estados de atualização.
+Administradores devem possuir recursos para gerenciar publicações, fontes, categorias e disciplinas. Moderadores podem analisar contribuições e denúncias; administradores também podem executar essas ações.
 
-### RF-017 - Rastreabilidade
+### RF-015 - Rastreabilidade
 
 O sistema deve preservar a origem de cada informação e o vínculo com a fonte oficial ou com o colaborador responsável.
 
-### RF-018 - Tratamento de falhas
+### RF-016 - Tratamento de falhas
 
-Falhas de coleta ou verificação devem ser identificadas explicitamente, sem remover silenciosamente informações relevantes.
+Falhas de verificação devem ser identificadas explicitamente, sem remover silenciosamente informações relevantes. Documentos oficiais não pesquisáveis devem manter o link para consulta externa.
 
-### RF-019 - Permissões
+### RF-017 - Permissões
 
 O sistema deve impedir que usuários sem autorização publiquem ou alterem diretamente conteúdos moderados.
 
-### RF-020 - Mensagens de estado
+### RF-018 - Mensagens de estado
 
-O sistema deve apresentar mensagens compreensíveis para estados vazios, erros de acesso, falhas de fonte e envios incompletos.
+O sistema deve apresentar mensagens que informem a causa do problema e, quando aplicável, orientem como corrigi-lo ou tentar novamente.
+
+### RF-019 - Cadastro de conta
+
+O sistema deve permitir que estudantes criem a própria conta com nome, e-mail único e senha.
+
+### RF-020 - Cadastro de publicações
+
+Somente administradores podem cadastrar ou alterar publicações institucionais. O cadastro deve exigir título, resumo, categoria, unidade responsável e fonte oficial.
+
+### RF-021 - Filtros e estados institucionais
+
+O filtro por termo deve pesquisar título e resumo. Categoria, unidade, curso, estado e prazo devem filtrar os respectivos campos.
+
+Publicações sem prazo devem ser identificadas como `sem_prazo` e essa condição deve ser informada ao usuário. Fontes não verificadas devem ser identificadas claramente.
+
+### RF-022 - Validação de dados
+
+O sistema deve rejeitar cadastros incompletos antes de criar registros parciais, informando os campos ausentes. Denúncias devem exigir tipo e descrição.
 
 ## 5. Requisitos não funcionais
 
 ### RNF-001 - Segurança de acesso
 
-O sistema deve diferenciar, no mínimo, os perfis de usuário, colaborador, moderador e administrador. Operações não autorizadas devem ser negadas.
+O sistema deve diferenciar os perfis de usuário, moderador e administrador. Qualquer usuário autenticado pode contribuir; operações de moderação e administração não autorizadas devem ser negadas.
 
 ### RNF-002 - Privacidade
 
-O sistema deve coletar somente os dados necessários para conta, preferências, autoria e moderação. O usuário deve poder consultar e corrigir seus dados quando aplicável.
+O sistema deve coletar somente os dados necessários para conta, autoria, denúncias e moderação. Senhas não podem aparecer em respostas, mensagens de erro ou registros de operação.
 
 ### RNF-003 - Acessibilidade
 
-As funcionalidades principais de consulta, busca, contribuição e leitura de publicações devem ser utilizáveis por teclado e apresentar nomes compreensíveis para leitores de tela.
+As funcionalidades principais de consulta, busca, contribuição e moderação devem oferecer nomes acessíveis, foco visível e navegação por teclado.
 
 ### RNF-004 - Compatibilidade
 
-As páginas públicas devem funcionar nos principais navegadores desktop e mobile, com layout adaptado para telas pequenas.
+O MVP deve considerar os principais navegadores desktop atuais e as versões móveis atuais de Chrome e Safari, com layout adaptado para telas pequenas.
 
 ### RNF-005 - Confiabilidade da informação
 
@@ -160,6 +170,8 @@ O código deve ser organizado por responsabilidades e possuir testes automatizad
 
 O repositório deve conter instruções básicas de configuração, execução e contribuição do projeto.
 
+Não fazem parte deste projeto metas de desempenho, capacidade, escalabilidade ou infraestrutura avançada.
+
 ## 6. Cenários de uso prioritários
 
 ### Cenário 1: Encontrar um edital
@@ -167,7 +179,7 @@ O repositório deve conter instruções básicas de configuração, execução e
 1. O estudante acessa a Central de Editais e Avisos.
 2. Filtra por categoria, unidade, curso ou prazo.
 3. Abre uma publicação relevante.
-4. Consulta o resumo, o prazo, o estado de atualização e a fonte oficial.
+4. Consulta o resumo, o prazo, o estado, a data de verificação e a fonte oficial.
 5. Acessa o canal oficial para obter a informação definitiva.
 
 ### Cenário 2: Consultar uma disciplina
@@ -180,9 +192,9 @@ O repositório deve conter instruções básicas de configuração, execução e
 
 ### Cenário 3: Enviar uma contribuição
 
-1. O colaborador acessa o guia de primeira contribuição.
+1. O usuário autenticado acessa o guia de primeira contribuição.
 2. Preenche o formulário com disciplina, categoria, conteúdo e fonte.
-3. Envia a contribuição.
+3. Envia a contribuição autenticada.
 4. A contribuição fica pendente de revisão.
 5. O colaborador acompanha a aprovação ou recebe orientações para ajustes.
 
@@ -196,12 +208,14 @@ O repositório deve conter instruções básicas de configuração, execução e
 - Formulário enviado sem informações obrigatórias.
 - Busca sem resultados.
 - Usuário tentando acessar uma função sem permissão.
+- Cadastro de conta com e-mail já utilizado.
+- Denúncia enviada sem autenticação, tipo ou descrição.
 
 ## 8. Entidades principais
 
 ### Usuário
 
-Pessoa autenticada que pode salvar preferências, enviar contribuições ou moderar conteúdo. Possui nome, e-mail, perfil e estado.
+Pessoa que consulta informações e pode criar uma conta. Usuários autenticados podem enviar contribuições e denúncias; moderadores e administradores possuem permissões adicionais.
 
 ### Curso
 
@@ -213,7 +227,7 @@ Unidade curricular que pertence a um curso e organiza os conteúdos acadêmicos.
 
 ### Conteúdo acadêmico
 
-Material publicado na Base de Conhecimento, como resumo, dica, dificuldade, prova, implementação ou link.
+Material publicado na Base de Conhecimento, como resumo, dica, dificuldade, prova, implementação ou link. Pode estar publicado ou arquivado.
 
 ### Contribuição
 
@@ -225,11 +239,11 @@ Canal oficial monitorado pela equipe responsável pelo cadastro das publicaçõe
 
 ### Publicação institucional
 
-Edital, aviso ou comunicado que possui fonte, unidade responsável, categoria, datas, estado e link oficial.
+Edital, aviso ou comunicado que possui fonte, unidade responsável, categoria, datas, estado e link oficial. Estados previstos: ativa, não verificada e sem prazo.
 
 ### Denúncia
 
-Relato de problema em uma publicação ou conteúdo, encaminhado para análise.
+Relato autenticado de problema em uma publicação ou conteúdo, com tipo, descrição e estado de análise.
 
 ## 9. Arquitetura e tecnologias definidas
 
@@ -239,6 +253,9 @@ A solução será desenvolvida como uma aplicação web simples, adequada ao esc
 - **Back-end:** Python utilizando FastAPI para disponibilizar as funcionalidades do sistema.
 - **Banco de dados inicial:** SQLite, por ser adequado ao desenvolvimento local e à fase inicial do projeto.
 - **Banco de dados posterior:** PostgreSQL, caso o projeto avance para uma etapa que exija essa migração.
+- **Autenticação:** cadastro e login locais, sem integração com login institucional da UnB no MVP.
+- **Cadastro institucional:** publicações serão inseridas manualmente por administradores a partir de fontes oficiais.
+- **Fontes iniciais:** Reitoria, decanatos, institutos, faculdades, coordenações e canais oficiais relacionados ao SEI.
 - **Organização:** separação entre interface, regras do sistema, persistência de dados e testes.
 
 As decisões sobre autenticação, fontes institucionais prioritárias, hospedagem e armazenamento de arquivos ainda serão definidas pela equipe conforme a necessidade do projeto.
@@ -247,13 +264,13 @@ As decisões sobre autenticação, fontes institucionais prioritárias, hospedag
 
 - Usuários conseguem consultar a Base de Conhecimento e a Central de Editais sem autenticação.
 - A busca diferencia resultados acadêmicos e institucionais.
-- Publicações exibem fonte oficial, unidade responsável e data de verificação quando essas informações estiverem disponíveis.
+- Publicações exibem fonte oficial, unidade responsável, estado e data de verificação quando essas informações estiverem disponíveis.
 - Contribuições novas permanecem pendentes até uma decisão de moderação.
 - Cada decisão de moderação altera o estado esperado da contribuição.
 - Usuários comuns não acessam operações de moderação ou administração.
-- Publicações encerradas, canceladas ou desatualizadas são identificadas corretamente.
-- Relatos de problemas são registrados para análise.
-- O sistema apresenta mensagens compreensíveis quando não há resultados ou quando ocorre uma falha.
+- Publicações sem prazo ou sem verificação são identificadas corretamente.
+- Relatos autenticados de problemas são registrados para análise.
+- O sistema apresenta a causa e uma orientação quando ocorre uma falha, quando aplicável.
 - A navegação principal pode ser realizada por teclado.
 
 ## 11. Observação final
