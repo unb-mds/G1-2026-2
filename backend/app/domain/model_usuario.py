@@ -7,7 +7,7 @@ from sqlmodel import SQLModel, Field
 
 class UsuarioBase(SQLModel):
 
-    email : EmailStr
+    email : EmailStr = Field(unique=True, index=True)
     nome : str
     perfil : str
     status : str #troquei o literal pois SQLModel não aceita literal

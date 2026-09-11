@@ -1,7 +1,7 @@
 from datetime import datetime
 
-from pydantic import field_validator
-from sqlmodel import SQLModel, Field
+from pydantic import field_validator, HttpUrl
+from sqlmodel import SQLModel, Field, AutoString
 
 
 class PublicacaoInstitucionalBase(SQLModel):
@@ -11,7 +11,8 @@ class PublicacaoInstitucionalBase(SQLModel):
     categoria: str
     unidade_responsavel: str
     curso_id: int | None = None
-    url_oficial: str
+    url_oficial: HttpUrl =   Field(unique=True, index=True, sa_type=AutoString)
+    url_oficial : str = str(url_oficial)
     publicado_em: datetime | None = None
     prazo_inicio: datetime | None = None
     prazo_fim: datetime | None = None
